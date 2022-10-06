@@ -5,13 +5,14 @@ const path = require('path');
 module.exports = {
     entry: './src/index.tsx',
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 use: ['babel-loader', 'ts-loader'],
+                exclude: /node_modules/,
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -24,7 +25,7 @@ module.exports = {
         ],
     },
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js',
     },
     plugins: [
