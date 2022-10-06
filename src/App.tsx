@@ -1,14 +1,16 @@
 import React from 'react';
-import { Global, ThemeProvider } from '@emotion/react';
-import reset from './styles/globalStyle';
+import { ThemeProvider } from '@emotion/react';
+import GlobalStyle from './styles/globalStyle';
+import theme from './styles/theme';
 
 const App = () => {
     return (
-        <div className="App">
-            <Global styles={reset} />
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
             <h1>React without CRA</h1>
             <a href="https://www.naver.com">naver</a>
-        </div>
+            <p style={{ color: theme.color.main }}>hihi</p>
+        </ThemeProvider>
     );
 };
 
