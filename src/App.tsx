@@ -7,9 +7,7 @@ const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <h1>React without CRA</h1>
-            <a href="https://www.naver.com">naver</a>
-            <p style={{ color: theme.color.main }}>hihi</p>
+            <h1 style={{ color: theme.color.primary }}>React without CRA</h1>
         </ThemeProvider>
     );
 };
