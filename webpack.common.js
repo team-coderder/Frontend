@@ -10,9 +10,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: ['babel-loader', 'ts-loader'],
+                test: /\.(ts|tsx)?$/,
+                use: ['ts-loader'],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader',
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -25,7 +30,7 @@ module.exports = {
         ],
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
     plugins: [
@@ -34,4 +39,5 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
     ],
+    target: ['web', 'es6'],
 };
