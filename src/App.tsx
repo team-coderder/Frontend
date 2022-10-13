@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import GlobalStyle from './styles/globalStyle';
 import theme from './styles/theme';
 import Button from './components/Button';
+import Nav from './components/Nav';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <Button color="black" hoverBgColor="white" hoverColor="gray">
                 로그인
             </Button>
+            {/* <Nav url="www.naver.com">naver</Nav> */}
         </ThemeProvider>
     );
 };

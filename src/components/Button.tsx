@@ -13,6 +13,7 @@ interface ButtonProps {
     hoverBgColor?: 'black' | 'white';
     hoverColor?: 'gray' | 'white';
     children: React.ReactNode;
+    // url: string;
 }
 
 const Button = ({
