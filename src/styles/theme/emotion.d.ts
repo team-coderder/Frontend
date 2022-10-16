@@ -7,6 +7,16 @@ declare module '@emotion/react' {
             sub: string;
             black: string;
             white: string;
+            primary: string;
+            secondary: string;
+            warning: string;
+            success: string;
+        };
+        font: {
+            size: {
+                primary: number;
+                secondary: number;
+            };
         };
     }
 }

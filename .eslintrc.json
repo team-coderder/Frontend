@@ -19,7 +19,12 @@
     "ignorePatterns": ["node_modules/"],
     "rules": {
         "no-console": "off",
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "react/function-component-definition": "off",
         "react/require-default-props": "off",
         "react/prop-types": "off",
