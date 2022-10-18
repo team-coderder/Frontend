@@ -1,9 +1,10 @@
 import React from 'react';
+import Test from '../views/Test';
 
 const mainRoutes = () => {
     return {
         path: '/',
-        // element: <Test />,
+        element: <Test />,
         children: [{ path: '' }],
     };
 };
