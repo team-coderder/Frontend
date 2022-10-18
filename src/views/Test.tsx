@@ -19,6 +19,8 @@ function Test() {
                 type="password"
                 value={value}
                 onChange={handleChange}
+                error={true}
+                message="prop message ex)비밀번호가 일치하지 않습니다"
             />
 
             <Button

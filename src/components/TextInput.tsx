@@ -10,6 +10,7 @@ interface TextInputProps {
     error?: boolean;
     placeholder?: string;
     value?: string | number;
+    message?: string;
     children?: React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -30,7 +31,7 @@ const Component = styled.input<TextInputProps>`
 `;
 
 const Label = styled.label`
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     font-size: ${({ theme }) => theme.font.size.small}px;
 `;
@@ -44,9 +45,20 @@ function TextInput(props: TextInputProps) {
                 type={props.type}
                 value={props.value}
                 onChange={props.onChange}
+                width={props.width}
+                height={props.height}
+                message={props.message}
             />
             {props.children}
-            {/* {props.error && <p style={{ color: theme.color.sub }}>error</p>} */}
+            {props.error ? (
+                <div style={{ color: theme.color.warning }}>
+                    {props.message}
+                </div>
+            ) : (
+                <div style={{ display: 'flex', color: theme.color.black }}>
+                    good
+                </div>
+            )}
         </Label>
     );
 }
