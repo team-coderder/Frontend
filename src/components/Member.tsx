@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { CiCircleRemove } from 'react-icons/ci';
 
 interface MemberProps {
     width?: string;
@@ -9,6 +10,8 @@ interface MemberProps {
     backgroundColor?: 'main' | 'sub';
     radius?: 'large' | 'medium' | 'small';
     focusBgColor?: 'black' | 'white';
+    disable?: boolean;
+    space?: number;
     children: React.ReactNode;
     // url: string;
 }
@@ -46,6 +49,10 @@ const Component = styled.div<MemberProps>`
                     ? props.backgroundColor
                     : theme.color[props.focusBgColor]};
     }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: ${(props) => props.space}px;
 `;
 
 const Member = ({
@@ -56,6 +63,8 @@ const Member = ({
     backgroundColor,
     radius,
     focusBgColor,
+    disable,
+    space,
     children,
 }: MemberProps) => {
     return (
@@ -67,8 +76,17 @@ const Member = ({
             backgroundColor={backgroundColor}
             radius={radius}
             focusBgColor={focusBgColor}
+            space={space}
         >
-            {children}
+            <>
+                {children}
+                {disable && (
+                    <CiCircleRemove
+                        style={{ marginLeft: '20px' }}
+                        onClick={() => console.log('memeber deleted!')}
+                    />
+                )}
+            </>
         </Component>
     );
 };
