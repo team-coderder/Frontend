@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import BsCheckCircle from 'react-icons/bs';
 
 interface TextInputProps {
     width?: string;
@@ -39,12 +38,11 @@ const Label = styled.label`
 
 // const CheckCircle = () => <BsCheckCircle />;
 
-function TextInput(props: TextInputProps, CheckCircle: () => JSX.Element) {
+function TextInput(props: TextInputProps) {
     const theme = useTheme();
 
     return (
         <>
-            <BsCheckCircle />
             <Label>
                 <Component
                     type={props.type}
