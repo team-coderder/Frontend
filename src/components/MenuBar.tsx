@@ -11,7 +11,7 @@ interface MenuProps {
 
 const MenuBar = ({
     vertical,
-    breadth = '3rem',
+    breadth = '4rem',
     background,
     children,
     align_end,
@@ -22,8 +22,12 @@ const MenuBar = ({
         background-color: ${({ theme }) =>
             background ?? theme.color.main.light};
         display: flex;
+        align-items: center;
         flex-direction: ${vertical ? 'column' : 'row'};
-        justify-content: ${align_end ? 'flex-end' : 'flex-start'}}
+        justify-content: ${align_end ? 'flex-end' : 'flex-start'};
+        > * {
+            padding: 0.5rem;
+        }
     `;
     return <Bar>{children}</Bar>;
 };
