@@ -11,6 +11,7 @@ const reset = css`
     body {
         font-family: 'Spoqa Han Sans Neo';
         line-height: 1;
+        margin: 0;
     }
     a {
         text-decoration: none;
