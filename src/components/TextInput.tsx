@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import BsCheckCircle from 'react-icons/bs';
 
 interface TextInputProps {
     width?: string;
@@ -36,30 +37,40 @@ const Label = styled.label`
     font-size: ${({ theme }) => theme.font.size.small}px;
 `;
 
-function TextInput(props: TextInputProps) {
+// const CheckCircle = () => <BsCheckCircle />;
+
+function TextInput(props: TextInputProps, CheckCircle: () => JSX.Element) {
     const theme = useTheme();
 
     return (
-        <Label>
-            <Component
-                type={props.type}
-                value={props.value}
-                onChange={props.onChange}
-                width={props.width}
-                height={props.height}
-                message={props.message}
-            />
-            {props.children}
-            {props.error ? (
-                <div style={{ color: theme.color.warning }}>
-                    {props.message}
-                </div>
-            ) : (
-                <div style={{ display: 'flex', color: theme.color.black }}>
-                    good
-                </div>
-            )}
-        </Label>
+        <>
+            <BsCheckCircle />
+            <Label>
+                <Component
+                    type={props.type}
+                    value={props.value}
+                    onChange={props.onChange}
+                    width={props.width}
+                    height={props.height}
+                    message={props.message}
+                />
+                {props.children}
+                {props.error ? (
+                    <div
+                        style={{
+                            color: theme.color.warning,
+                            fontSize: theme.font.size.small,
+                        }}
+                    >
+                        {props.message}
+                    </div>
+                ) : (
+                    <div style={{ display: 'flex', color: theme.color.black }}>
+                        {props.message}
+                    </div>
+                )}
+            </Label>
+        </>
     );
 }
 
