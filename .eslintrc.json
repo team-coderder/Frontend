@@ -19,16 +19,12 @@
     "ignorePatterns": ["node_modules/"],
     "rules": {
         "no-console": "off",
-<<<<<<< HEAD
-        "prettier/prettier": "error",
-=======
         "prettier/prettier": [
             "error",
             {
                 "endOfLine": "auto"
             }
         ],
->>>>>>> 12-feat-route-setup
         "react/function-component-definition": "off",
         "react/require-default-props": "off",
         "react/prop-types": "off",
