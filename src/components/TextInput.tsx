@@ -31,44 +31,39 @@ const Component = styled.input<TextInputProps>`
 `;
 
 const Label = styled.label`
-    /* display: flex; */
     flex-direction: column;
     font-size: ${({ theme }) => theme.font.size.small}px;
 `;
-
-// const CheckCircle = () => <BsCheckCircle />;
 
 function TextInput(props: TextInputProps) {
     const theme = useTheme();
 
     return (
-        <>
-            <Label>
-                <Component
-                    type={props.type}
-                    value={props.value}
-                    onChange={props.onChange}
-                    width={props.width}
-                    height={props.height}
-                    message={props.message}
-                />
-                {props.children}
-                {props.error ? (
-                    <div
-                        style={{
-                            color: theme.color.warning,
-                            fontSize: theme.font.size.small,
-                        }}
-                    >
-                        {props.message}
-                    </div>
-                ) : (
-                    <div style={{ display: 'flex', color: theme.color.black }}>
-                        {props.message}
-                    </div>
-                )}
-            </Label>
-        </>
+        <Label>
+            <Component
+                type={props.type}
+                value={props.value}
+                onChange={props.onChange}
+                width={props.width}
+                height={props.height}
+                message={props.message}
+            />
+            {props.children}
+            {props.error ? (
+                <div
+                    style={{
+                        color: theme.color.warning,
+                        fontSize: theme.font.size.small,
+                    }}
+                >
+                    {props.message}
+                </div>
+            ) : (
+                <div style={{ display: 'flex', color: theme.color.black }}>
+                    {props.message}
+                </div>
+            )}
+        </Label>
     );
 }
 
