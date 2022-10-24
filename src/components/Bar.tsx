@@ -9,7 +9,7 @@ interface MenuProps {
     align_end?: boolean;
 }
 
-const MenuBar = ({
+const Bar = ({
     vertical,
     breadth = '4rem',
     background,
@@ -32,4 +32,4 @@ const MenuBar = ({
     return <Bar>{children}</Bar>;
 };
 
-export default MenuBar;
+export default Bar;

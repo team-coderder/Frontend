@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { Menubar, Modal } from '.';
+import { Bar, Modal } from '.';
 import { BsBell } from 'react-icons/bs';
 
 const Icon = styled.div`
@@ -44,7 +44,7 @@ function Navbar() {
         }
     };
     return (
-        <Menubar align_end>
+        <Bar align_end>
             <Modal
                 label="alarm"
                 icon={
@@ -69,7 +69,7 @@ function Navbar() {
             >
                 <button>로그아웃</button>
             </Modal>
-        </Menubar>
+        </Bar>
     );
 }
 
