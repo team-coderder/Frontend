@@ -2,17 +2,8 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Bar, Modal } from '.';
 import { BsBell } from 'react-icons/bs';
+import { Icon } from '../styles/Icon';
 
-const Icon = styled.div`
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ffe;
-    font-size: 1.5rem;
-    text-align: center;
-    line-height: 40px;
-    cursor: pointer;
-`;
 const Profile = styled.div`
     text-align: right;
 `;
