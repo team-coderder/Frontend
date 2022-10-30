@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 
 interface TextInputProps {
@@ -15,6 +14,11 @@ interface TextInputProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+const WarningBox = styled.div`
+    color: ${({ theme }) => theme.color.warning};
+    font-size: ${({ theme }) => theme.font.size.small};
+`;
+
 const Component = styled.input<TextInputProps>`
     width: ${(props) => props.width ?? 'auto'};
     height: ${(props) => props.height ?? 'auto'};
@@ -24,6 +28,7 @@ const Component = styled.input<TextInputProps>`
     border-left: medium none;
     border-right: medium none;
     border-top: medium none;
+    placeholder: ${(props) => props.placeholder};
     &:focus {
         outline: none;
         border-bottom: 1px solid ${({ theme }) => theme.color.black};
@@ -35,36 +40,34 @@ const Label = styled.label`
     font-size: ${({ theme }) => theme.font.size.small}px;
 `;
 
-function TextInput(props: TextInputProps) {
-    const theme = useTheme();
-
+const TextInput = ({
+    width,
+    height,
+    margin,
+    type,
+    error,
+    placeholder,
+    value,
+    message,
+    children,
+    onChange,
+}: TextInputProps) => {
     return (
         <Label>
             <Component
-                type={props.type}
-                value={props.value}
-                onChange={props.onChange}
-                width={props.width}
-                height={props.height}
-                message={props.message}
+                type={type}
+                value={value}
+                onChange={onChange}
+                width={width}
+                height={height}
+                message={message}
+                placeholder={placeholder}
+                margin={margin}
             />
-            {props.children}
-            {props.error ? (
-                <div
-                    style={{
-                        color: theme.color.warning,
-                        fontSize: theme.font.size.small,
-                    }}
-                >
-                    {props.message}
-                </div>
-            ) : (
-                <div style={{ display: 'flex', color: theme.color.black }}>
-                    {props.message}
-                </div>
-            )}
+            {children}
+            {error && <WarningBox>{message}</WarningBox>}
         </Label>
     );
-}
+};
 
 export default TextInput;
