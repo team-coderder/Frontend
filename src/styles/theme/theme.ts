@@ -26,8 +26,8 @@ const theme: Theme = {
         },
         size: {
             large: 55,
-            medium: 18,
-            small: 16,
+            medium: 16,
+            small: 12,
         },
     },
     borderRadius: {

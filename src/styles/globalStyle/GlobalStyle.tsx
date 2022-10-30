@@ -8,6 +8,7 @@ export default function GlobalStyle() {
 const reset = css`
     html,
     h1,
+    input,
     body {
         font-family: 'Spoqa Han Sans Neo';
         line-height: 1;
