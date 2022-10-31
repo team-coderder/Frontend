@@ -7,7 +7,7 @@ interface ButtonProps {
     fontSize?: 'large' | 'medium' | 'small';
     fontWeight?: 'bold' | 'normal' | 'thin';
     color?: 'white' | 'black';
-    backgroundColor?: 'yellow' | 'gray';
+    backgroundColor?: 'yellow' | 'gray' | 'main';
     type?: 'submit';
     radius?: 'large' | 'medium' | 'small';
     hoverBgColor?: 'black' | 'white';
@@ -42,7 +42,11 @@ const Button = ({
         color: ${({ theme }) =>
             !color ? theme.color.white : theme.color.black};
         background-color: ${({ theme }) =>
-            !backgroundColor ? theme.color.sub.common : theme.color.gray};
+            !backgroundColor
+                ? theme.color.sub.common
+                : backgroundColor == 'main'
+                ? theme.color.main.common
+                : theme.color.gray};
         cursor: pointer;
         border: none;
         border-radius: ${({ theme }) =>

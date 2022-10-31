@@ -1,5 +1,6 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
+import theme from '../theme';
 
 export default function GlobalStyle() {
     return <Global styles={reset} />;
@@ -13,6 +14,7 @@ const reset = css`
         font-family: 'Spoqa Han Sans Neo';
         line-height: 1;
         margin: 0;
+        background-color: ${theme.color.main.common};
     }
     a {
         text-decoration: none;

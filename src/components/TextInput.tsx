@@ -31,7 +31,7 @@ const Component = styled.input<TextInputProps>`
     placeholder: ${(props) => props.placeholder};
     &:focus {
         outline: none;
-        border-bottom: 1px solid ${({ theme }) => theme.color.black};
+        border-bottom: 1px solid ${({ theme }) => theme.color.white};
     }
 `;
 
