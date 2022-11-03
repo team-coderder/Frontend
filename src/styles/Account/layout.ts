@@ -8,7 +8,7 @@ const FormContainer = styled.div`
     justify-content: center;
     align-items: center;
     /* background-color: ${({ theme }) => theme.color.white}; */
-    margin-top: 200px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     color: white;
@@ -30,7 +30,7 @@ const FormBox = styled.form`
     align-items: center;
 `;
 
-const NoAccountBox = styled.div`
+const ExplainBox = styled.div`
     display: flex;
     flex-direction: row;
     width: 200px;
@@ -53,4 +53,4 @@ const NavBox = styled.div`
     align-items: center;
 `;
 
-export { FormContainer, Header, FormBox, NoAccountBox, NavBox, HelpBox };
+export { FormContainer, Header, FormBox, ExplainBox, NavBox, HelpBox };

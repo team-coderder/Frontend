@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import theme from '../styles/theme';
 
 interface TextInputProps {
     width?: string;
@@ -15,6 +16,8 @@ interface TextInputProps {
 }
 
 const WarningBox = styled.div`
+    padding-left: 30px;
+    margin-top: -15px;
     color: ${({ theme }) => theme.color.warning};
     font-size: ${({ theme }) => theme.font.size.small};
 `;
@@ -29,6 +32,9 @@ const Component = styled.input<TextInputProps>`
     border-right: medium none;
     border-top: medium none;
     placeholder: ${(props) => props.placeholder};
+    ::placeholder {
+        color: ${() => theme.color.white};
+    }
     &:focus {
         outline: none;
         border-bottom: 1px solid ${({ theme }) => theme.color.white};

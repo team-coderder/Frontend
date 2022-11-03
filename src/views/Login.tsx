@@ -7,7 +7,7 @@ import {
     Header,
     HelpBox,
     NavBox,
-    NoAccountBox,
+    ExplainBox,
 } from '../styles/account/layout';
 
 const Login = () => {
@@ -46,14 +46,14 @@ const Login = () => {
                 <Button type="submit" hoverBgColor="black">
                     로그인
                 </Button>
-                <NoAccountBox>
+                <ExplainBox>
                     <HelpBox>계정이 없다면?</HelpBox>
                     <NavBox>
-                        <Nav url="/signin" color="white" underLine={true}>
+                        <Nav url="/signup" color="white" underLine={true}>
                             회원가입
                         </Nav>
                     </NavBox>
-                </NoAccountBox>
+                </ExplainBox>
             </FormBox>
         </FormContainer>
     );
