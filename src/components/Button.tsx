@@ -13,7 +13,7 @@ interface ButtonProps {
     hoverBgColor?: 'black' | 'white';
     hoverColor?: 'gray' | 'white';
     children: React.ReactNode;
-    // url: string;
+    onClick?: () => void;
 }
 
 const Button = ({
@@ -28,6 +28,7 @@ const Button = ({
     hoverBgColor,
     hoverColor,
     children,
+    onClick,
 }: ButtonProps) => {
     const Component = styled.button`
         width: ${width ?? '200px'};
@@ -60,7 +61,10 @@ const Button = ({
         }
     `;
     return (
-        <Component type={type === 'submit' ? 'submit' : 'button'}>
+        <Component
+            type={type === 'submit' ? 'submit' : 'button'}
+            onClick={onClick}
+        >
             {children}
         </Component>
     );
