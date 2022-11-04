@@ -7,22 +7,27 @@ interface Props {
     background?: string;
     children: React.ReactNode;
     align_end?: boolean;
+    margin?: string;
+    padding?: string;
 }
 
 const StyledBar = styled.div<Props>`
-    position: absolute;
+    position: fixed;
+    top: 0;
     height: ${({ vertical, breadth }) => (vertical ? '100%' : breadth)};
     width: ${({ vertical, breadth }) => (!vertical ? '100vw' : breadth)};
+    margin: ${({ margin }) => margin};
+    padding: ${({ padding }) => padding};
     background-color: ${({ theme, background }) =>
-        background ?? theme.color.main.light};
+        background ?? theme.color.white};
     display: flex;
-    align-items: center;
+    align-items: left;
     flex-direction: ${({ vertical }) => (vertical ? 'column' : 'row')};
     justify-content: ${({ align_end }) =>
         align_end ? 'flex-end' : 'flex-start'};
     transition: all 0.5s;
     > * {
-        padding: 0.5rem;
+        margin: 1rem;
     }
 `;
 
@@ -32,6 +37,8 @@ const Bar = ({
     background,
     children,
     align_end,
+    margin,
+    padding,
 }: Props) => {
     return (
         <StyledBar
@@ -39,6 +46,8 @@ const Bar = ({
             breadth={breadth}
             background={background}
             align_end={align_end}
+            margin={margin}
+            padding={padding}
         >
             {children}
         </StyledBar>

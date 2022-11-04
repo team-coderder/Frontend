@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Bar } from '.';
 import { FiMenu } from 'react-icons/fi';
 import { Icon } from '../styles/Icon';
+import styled from '@emotion/styled';
 
 const _groups = [
     {
@@ -22,20 +23,28 @@ const _groups = [
     },
 ];
 
+const GroupName = styled.div`
+    text-align: center;
+`;
+
 function Groupbar() {
     const [toggleGroups, setToggleGroups] = useState(false);
     const toggle = () => setToggleGroups(!toggleGroups);
 
     return (
-        <Bar vertical breadth={toggleGroups ? '15rem' : '3rem'}>
+        <Bar
+            vertical
+            breadth={toggleGroups ? '15rem' : '4rem'}
+            margin="4rem 0 0 0"
+        >
             <Icon>
                 <FiMenu onClick={toggle} />
             </Icon>
             {_groups.map((group, index) => (
-                <div key={index}>
-                    {group.teamId}
+                <GroupName key={index}>
+                    <Icon>{group.teamId}</Icon>
                     {toggleGroups && group.name}
-                </div>
+                </GroupName>
             ))}
         </Bar>
     );
