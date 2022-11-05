@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 interface TextInputProps {
     width?: string;
     height?: string;
+    marginLeft?: string;
     margin?: string;
     type?: 'none' | 'id' | 'password';
     error?: boolean;
@@ -23,6 +24,7 @@ const Component = styled.input<TextInputProps>`
     width: ${(props) => props.width ?? 'auto'};
     height: ${(props) => props.height ?? 'auto'};
     margin: ${(props) => props.margin ?? '0'};
+    margin-left: ${(props) => props.marginLeft ?? '0'};
     color: ${({ theme }) => theme.color.black};
     border-bottom: ${({ theme }) => theme.color.gray} 1px solid;
     border-left: medium none;
