@@ -1,15 +1,19 @@
 import React from 'react';
-
 import NavbarLayout from '../layouts/NavbarLayout';
-import { GroupInfo } from '../views';
-import App from '../App';
+import { Login, Signup } from '../views';
 
 const mainRoutes = () => {
     return {
         element: <NavbarLayout />,
         children: [
+            { path: '/' },
             {
-                path: '/',
+                path: '/login',
+                element: <Login />,
+            },
+            {
+                path: '/signup',
+                element: <Signup />,
             },
         ],
     };
