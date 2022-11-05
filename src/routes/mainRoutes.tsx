@@ -1,9 +1,17 @@
 import React from 'react';
 
+import NavbarLayout from '../layouts/NavbarLayout';
+import { GroupInfo } from '../views';
+import App from '../App';
+
 const mainRoutes = () => {
     return {
-        path: '/',
-        children: [{ path: '' }],
+        element: <NavbarLayout />,
+        children: [
+            {
+                path: '/',
+            },
+        ],
     };
 };
 
