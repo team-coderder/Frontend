@@ -1,11 +1,20 @@
 import React from 'react';
-import AddGroup from '../views/AddGroup';
+import NavbarLayout from '../layouts/NavbarLayout';
+import { Login, Signup, AddGroup } from '../views';
 
 const mainRoutes = () => {
     return {
-        path: '/',
+        element: <NavbarLayout />,
         children: [
-            { path: '' },
+            { path: '/' },
+            {
+                path: '/login',
+                element: <Login />,
+            },
+            {
+                path: '/signup',
+                element: <Signup />,
+            },
             {
                 path: '/addGroup',
                 element: <AddGroup />,

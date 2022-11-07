@@ -9,7 +9,6 @@ const dummy = ['a', 'b', 'c', 'd'];
 const AddGroup = () => {
     return (
         <>
-            <Navbar />
             <Header>
                 <h1>그룹 생성하기</h1>
             </Header>
@@ -27,7 +26,9 @@ const AddGroup = () => {
             </InputBox>
             <MemberBox>
                 {dummy.map((x) => (
-                    <Member>{x}</Member>
+                    <Member backgroundColor="sub" color="black" disable={true}>
+                        {x}
+                    </Member>
                 ))}
             </MemberBox>
         </>
