@@ -1,37 +1,53 @@
 import React from 'react';
-import { Navbar } from '../components';
 import Member from '../components/Member';
 import TextInput from '../components/TextInput';
-import { Header, InputBox, MemberBox } from '../styles/member/member';
+import { generateColor } from '../hooks/ColorMethod';
+import {
+    AddGroupContainer,
+    Header,
+    InputContainer,
+    InputBox,
+    MemberBox,
+} from '../styles/member/member';
 
-const dummy = ['a', 'b', 'c', 'd'];
+const dummy = ['강정구', '진지연', '송민진', '임지우', '권영재', 'f'];
 
 const AddGroup = () => {
     return (
-        <>
+        <AddGroupContainer>
             <Header>
                 <h1>그룹 생성하기</h1>
             </Header>
-            <InputBox>
+            <InputContainer>
                 그룹 이름
-                <TextInput
-                    marginLeft="20px"
-                    width="100%"
-                    placeholder="그룹 이름을 입력해주세요."
-                />
-            </InputBox>
-            <InputBox>
+                <InputBox>
+                    <TextInput
+                        width="300px"
+                        placeholder="그룹 이름을 입력해주세요."
+                    />
+                </InputBox>
+            </InputContainer>
+            <InputContainer>
                 멤버 추가
-                <TextInput width="100%" placeholder="ID 검색" />+
-            </InputBox>
+                <InputBox>
+                    <TextInput width="300px" placeholder="ID 검색" />+
+                </InputBox>
+            </InputContainer>
             <MemberBox>
-                {dummy.map((x) => (
-                    <Member backgroundColor="sub" color="black" disable={true}>
+                {dummy.map((x, idx) => (
+                    <Member
+                        key={idx}
+                        space={5}
+                        backgroundColor={generateColor(x)}
+                        color="white"
+                        disable={true}
+                    >
                         {x}
+                        {' : ' + generateColor(x)}
                     </Member>
                 ))}
             </MemberBox>
-        </>
+        </AddGroupContainer>
     );
 };
 

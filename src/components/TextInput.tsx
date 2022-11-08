@@ -17,7 +17,6 @@ interface TextInputProps {
 }
 
 const WarningBox = styled.div`
-    padding-left: 30px;
     margin-top: -15px;
     color: ${({ theme }) => theme.color.warning};
     font-size: ${({ theme }) => theme.font.size.small};
