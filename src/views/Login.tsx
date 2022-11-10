@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextInput, Nav } from '../components';
+import SearchID from '../components/SearchID';
 
 import {
     FormBox,
@@ -55,6 +56,7 @@ const Login = () => {
                     </NavBox>
                 </ExplainBox>
             </FormBox>
+            <SearchID space="10px" width="300px" />
         </FormContainer>
     );
 };
