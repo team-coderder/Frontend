@@ -5,3 +5,4 @@ export { default as Button } from './Button';
 export { default as TextInput } from './TextInput';
 export { default as Nav } from './Nav';
 export { default as Groupbar } from './Groupbar';
+export { default as Member } from './Member';
