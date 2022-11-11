@@ -1,6 +1,6 @@
 import React from 'react';
 import NavbarLayout from '../layouts/NavbarLayout';
-import { Login, Signup } from '../views';
+import { Login, Signup, MySchedule } from '../views';
 
 const mainRoutes = () => {
     return {
@@ -14,6 +14,10 @@ const mainRoutes = () => {
             {
                 path: '/signup',
                 element: <Signup />,
+            },
+            {
+                path: '/myschedule',
+                element: <MySchedule />,
             },
         ],
     };
