@@ -56,7 +56,7 @@ const Login = () => {
                     </NavBox>
                 </ExplainBox>
             </FormBox>
-            <SearchID space="10px" width="300px" />
+            <SearchID width="300px" height="30px" space="10px" />
         </FormContainer>
     );
 };
