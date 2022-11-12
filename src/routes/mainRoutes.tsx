@@ -1,26 +1,38 @@
 import React from 'react';
 import NavbarLayout from '../layouts/NavbarLayout';
-import { Login, Signup, GroupInfo } from '../views';
+import { Login, Signup, AddGroup, GroupInfo } from '../views';
 
 const mainRoutes = () => {
-    return {
-        element: <NavbarLayout />,
-        children: [
-            { path: '/' },
-            {
-                path: '/login',
-                element: <Login />,
-            },
-            {
-                path: '/signup',
-                element: <Signup />,
-            },
-            {
-                path: '/groupinfo',
-                element: <GroupInfo />,
-            },
-        ],
-    };
+    return [
+        {
+            // element: <NavbarLayout />,
+            path: '/',
+            children: [
+                {
+                    path: 'login',
+                    element: <Login />,
+                },
+                {
+                    path: 'signup',
+                    element: <Signup />,
+                },
+            ],
+        },
+        {
+            element: <NavbarLayout />,
+
+            children: [
+                {
+                    path: '/addGroup',
+                    element: <AddGroup />,
+                },
+                {
+                    path: '/groupinfo',
+                    element: <GroupInfo />,
+                },
+            ],
+        },
+    ];
 };
 
 export default mainRoutes;
