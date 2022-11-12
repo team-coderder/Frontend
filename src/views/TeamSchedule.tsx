@@ -36,6 +36,10 @@ const Field = styled.div`
         font-size: 1.2rem;
     }
 `;
+const MarginRight = styled.div`
+    margin-right: 10px;
+    display: inline-block;
+`;
 
 const TeamSchedule = () => {
   return (
@@ -45,7 +49,7 @@ const TeamSchedule = () => {
                 <FiSettings size="24" />
             </Header>
             <AlignRight>
-                <Button>그룹 스케줄 수정</Button>
+                <Button height="2.5rem">그룹 스케줄 수정</Button>
             </AlignRight>
             <Schedule />
             <Field>
@@ -54,8 +58,10 @@ const TeamSchedule = () => {
             </Field>
             <Field>
                 <h2>보기모드</h2>
-                <Button width="10rem">색깔로</Button>
-                <Button width="10rem">진하게</Button>
+                <MarginRight>
+                    <Button width="5rem" height="2.5rem" color="black" backgroundColor='gray'>색깔로</Button>
+                </MarginRight>
+                <Button width="5rem" height="2.4rem" color="black" backgroundColor='gray'>진하게</Button>
             </Field>
         </Container>
   )
