@@ -33,14 +33,14 @@ const GroupInfo = () => (
         <Main>
             <Field>
                 <FieldName>그룹 이름</FieldName>
-                <TextInput width="700px" height="2rem" margin="0 20px 0 0" />
+                <TextInput height="2rem" margin="0 20px 0 0" />
                 <Button height="100%" width="9em">
                     수정하기
                 </Button>
             </Field>
             <Field>
                 <FieldName>멤버 관리</FieldName>
-                <TextInput width="700px" height="2rem" placeholder="ID 검색" />
+                <TextInput height="2rem" placeholder="ID 검색" />
             </Field>
             <Field>
                 <FieldName></FieldName>
