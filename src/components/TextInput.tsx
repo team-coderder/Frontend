@@ -23,7 +23,7 @@ const WarningBox = styled.div`
 `;
 
 const Component = styled.input<TextInputProps>`
-    width: ${(props) => props.width ?? 'auto'};
+    width: ${(props) => props.width ?? '300px'};
     height: ${(props) => props.height ?? 'auto'};
     margin: ${(props) => props.margin ?? '0'};
     margin-left: ${(props) => props.marginLeft ?? '0'};

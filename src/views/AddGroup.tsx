@@ -21,16 +21,13 @@ const AddGroup = () => {
             <InputContainer>
                 그룹 이름
                 <InputBox>
-                    <TextInput
-                        width="300px"
-                        placeholder="그룹 이름을 입력해주세요."
-                    />
+                    <TextInput placeholder="그룹 이름을 입력해주세요." />
                 </InputBox>
             </InputContainer>
             <InputContainer>
                 멤버 추가
                 <InputBox>
-                    <TextInput width="300px" placeholder="ID 검색" />+
+                    <TextInput placeholder="ID 검색" />+
                 </InputBox>
             </InputContainer>
             <MemberBox>
