@@ -2,28 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { TextInput, Button, Member } from '../components';
-
-const Container = styled.div`
-    width: 80%;
-    margin: auto;
-    margin-top: 150px;
-`;
-const Header = styled.div`
-    color: #fff;
-`;
-const Main = styled.div`
-    margin-top: 50px;
-`;
-const Field = styled.div`
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-`;
-const FieldName = styled.div`
-    color: #fff;
-    width: 100px;
-`;
+import { Container, Header, SubHeader, Main, Field } from '../styles/globalStyle/PageLayout';
 
 const GroupInfo = () => (
     <Container>
@@ -32,30 +11,29 @@ const GroupInfo = () => (
         </Header>
         <Main>
             <Field>
-                <FieldName>그룹 이름</FieldName>
+                <SubHeader>그룹 이름</SubHeader>
                 <TextInput height="2rem" margin="0 20px 0 0" />
-                <Button height="100%" width="9em">
+                <Button height="2.5rem" width="9em">
                     수정하기
                 </Button>
             </Field>
             <Field>
-                <FieldName>멤버 관리</FieldName>
+                <SubHeader>멤버 관리</SubHeader>
                 <TextInput height="2rem" placeholder="ID 검색" />
             </Field>
             <Field>
-                <FieldName></FieldName>
-                <Member backgroundColor="main" height="100%" width="7em" space={5}>홍길동</Member>
-                <Member backgroundColor="main" height="100%" width="7em" space={5}>아바타</Member>
+                <Member backgroundColor="salmon" height="2.5rem" width="7em" space={5}>홍길동</Member>
+                <Member backgroundColor="indigo" height="2.5rem" width="7em" space={5}>아바타</Member>
             </Field>
             <Field>
-                <FieldName>그룹 삭제</FieldName>
-                <Button height="100%" width="9em">
+                <SubHeader>그룹 삭제</SubHeader>
+                <Button height="2.5rem" width="9em">
                     그룹 삭제
                 </Button>
             </Field>
             <Field>
-                <FieldName>그룹 탈퇴</FieldName>
-                <Button height="100%" width="9em">
+                <SubHeader>그룹 탈퇴</SubHeader>
+                <Button height="2.5rem" width="9em">
                     그룹 탈퇴
                 </Button>
             </Field>

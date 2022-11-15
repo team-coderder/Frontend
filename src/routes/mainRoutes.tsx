@@ -1,11 +1,10 @@
 import React from 'react';
 import NavbarLayout from '../layouts/NavbarLayout';
-import { Login, Signup, AddGroup, GroupInfo } from '../views';
+import { Login, Signup, AddGroup, GroupInfo, TeamSchedule } from '../views';
 
 const mainRoutes = () => {
     return [
         {
-            // element: <NavbarLayout />,
             path: '/',
             children: [
                 {
@@ -20,7 +19,6 @@ const mainRoutes = () => {
         },
         {
             element: <NavbarLayout />,
-
             children: [
                 {
                     path: '/addGroup',
@@ -29,6 +27,10 @@ const mainRoutes = () => {
                 {
                     path: '/groupinfo',
                     element: <GroupInfo />,
+                },
+                {
+                    path: '/teamschedule',
+                    element: <TeamSchedule />,
                 },
             ],
         },
