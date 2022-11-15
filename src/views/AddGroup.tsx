@@ -1,5 +1,6 @@
 import React from 'react';
 import Member from '../components/Member';
+import SearchID from '../components/SearchID';
 import TextInput from '../components/TextInput';
 import { generateColor } from '../hooks/ColorMethod';
 import {
@@ -28,6 +29,7 @@ const AddGroup = () => {
                 멤버 추가
                 <InputBox>
                     <TextInput placeholder="ID 검색" />+
+                    <SearchID />
                 </InputBox>
             </InputContainer>
             <MemberBox>

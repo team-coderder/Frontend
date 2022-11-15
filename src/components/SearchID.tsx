@@ -67,6 +67,7 @@ const SearchID = ({ width, height, space }: SearchProps) => {
                     <ResultBox
                         onClick={() => setVal(data.username)}
                         height={height}
+                        key={data.user_id}
                     >
                         <IconBox>
                             <BsSearch />
