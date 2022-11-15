@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { CiCircleRemove } from 'react-icons/ci';
+import { RiCloseCircleFill } from 'react-icons/Ri';
+import theme from '../styles/theme';
 
-interface MemberProps {
+type MemberProps = {
     width?: string;
     height?: string;
     fontSize?: 'large' | 'medium' | 'small';
     color?: 'white' | 'black';
-    backgroundColor?: 'main' | 'sub';
+    backgroundColor?: string;
     radius?: 'large' | 'medium' | 'small';
     focusBgColor?: 'black' | 'white';
     disable?: boolean;
     space?: number;
     children: React.ReactNode;
     // url: string;
-}
+};
 
 const Component = styled.div<MemberProps>`
     width: ${(props) => props.width ?? '150px'};
@@ -26,12 +27,8 @@ const Component = styled.div<MemberProps>`
                 : theme.font.size[props.fontSize]}px;
     color: ${(props) =>
         ({ theme }) =>
-            !props.color ? theme.color.white : theme.color.black};
-    background-color: ${(props) =>
-        ({ theme }) =>
-            !props.backgroundColor
-                ? theme.color.main.common
-                : theme.color.gray};
+            props.color === 'black' ? theme.color.black : theme.color.white};
+    background-color: ${(props) => props.backgroundColor};
     cursor: pointer;
     border: none;
     border-radius: ${(props) =>
@@ -50,9 +47,11 @@ const Component = styled.div<MemberProps>`
                     : theme.color[props.focusBgColor]};
     }
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: ${(props) => props.space}px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 `;
 
 const Member = ({
@@ -81,8 +80,12 @@ const Member = ({
             <>
                 {children}
                 {disable && (
-                    <CiCircleRemove
-                        style={{ marginLeft: '20px' }}
+                    <RiCloseCircleFill
+                        style={{
+                            position: 'relative',
+                            right: 0,
+                            color: `${theme.color.white}`,
+                        }}
                         onClick={() => console.log('memeber deleted!')}
                     />
                 )}

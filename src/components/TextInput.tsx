@@ -5,6 +5,7 @@ import theme from '../styles/theme';
 interface TextInputProps {
     width?: string;
     height?: string;
+    marginLeft?: string;
     margin?: string;
     type?: 'none' | 'id' | 'password';
     color?: 'white' | 'black';
@@ -17,17 +18,17 @@ interface TextInputProps {
 }
 
 const WarningBox = styled.div`
-    padding-left: 30px;
     margin-top: -15px;
     color: ${({ theme }) => theme.color.warning};
     font-size: ${({ theme }) => theme.font.size.small};
 `;
 
 const Component = styled.input<TextInputProps>`
-    width: ${(props) => props.width ?? 'auto'};
+    width: ${(props) => props.width ?? '300px'};
     height: ${(props) => props.height ?? 'auto'};
     margin: ${(props) => props.margin ?? '0'};
     color: ${({ color }) => (!color ? theme.color.white : theme.color.black)};
+    margin-left: ${(props) => props.marginLeft ?? '0'};
     border-bottom: ${({ theme }) => theme.color.gray} 1px solid;
     border-left: medium none;
     border-right: medium none;
