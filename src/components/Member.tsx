@@ -18,6 +18,8 @@ type MemberProps = {
 };
 
 const Component = styled.div<MemberProps>`
+    position: relative;
+    z-index: 1;
     width: ${(props) => props.width ?? '150px'};
     height: ${(props) => props.height ?? '40px'};
     font-size: ${(props) =>
@@ -82,8 +84,6 @@ const Member = ({
                 {disable && (
                     <RiCloseCircleFill
                         style={{
-                            position: 'relative',
-                            right: 0,
                             color: `${theme.color.white}`,
                         }}
                         onClick={() => console.log('memeber deleted!')}

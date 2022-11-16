@@ -9,24 +9,28 @@ interface SearchProps {
     height?: string;
     space?: string;
     onClick?: () => void;
+    ref?: any;
     // error?: boolean;
 }
 
 const SearchContainer = styled.div<SearchProps>`
+    position: relative;
+    z-index: 2;
     height: 30vh;
     margin: ${(props) => props.space};
 `;
 const ResultBox = styled.div<SearchProps>`
     background-color: ${() => theme.color.main.light};
     height: ${(props) => props.height};
-    padding-left: 3px;
-    border-radius: 2px;
+    padding: 5px;
     display: flex;
     align-items: center;
     &:hover {
         cursor: pointer;
         background-color: ${() => theme.color.main.dark};
     }
+    z-index: 2;
+    box-shadow: 1px 5px 5px gray;
 `;
 const ResultId = styled.div`
     padding-left: 13px;
@@ -46,8 +50,20 @@ const dummy = [
         username: 'tousles22',
         nickname: 'jours',
     },
+    {
+        user_id: '3',
+        username: 'tousl2',
+    },
+    {
+        user_id: '4',
+        username: 'dwdjjj',
+    },
+    {
+        user_id: '5',
+        username: 'asdf',
+    },
 ];
-const SearchID = ({ width, height, space }: SearchProps) => {
+const SearchID = ({ width, height, space, ref }: SearchProps) => {
     const [val, setVal] = useState('');
 
     const handleVal = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +95,7 @@ const SearchID = ({ width, height, space }: SearchProps) => {
         });
 
     return (
-        <SearchContainer space={space}>
+        <SearchContainer space={space} ref={ref}>
             <TextInput
                 width={width}
                 height={height}

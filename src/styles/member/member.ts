@@ -17,12 +17,17 @@ export const Header = styled.div`
 export const InputContainer = styled.div`
     display: flex;
     flex-direction: row;
-    vertical-align: center;
     justify-content: flex-start;
     margin-left: 50px;
     height: 30px;
     min-width: 600px;
     margin-top: 3.5rem;
+
+    .plusBtn {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 `;
 
 export const InputBox = styled.div`
