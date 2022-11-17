@@ -19,6 +19,7 @@
         "@babel/preset-react": "^7.18.6",
         "@babel/preset-typescript": "^7.18.6",
         "@babel/runtime": "^7.19.0",
+        "@daypilot/daypilot-lite-react": "^3.11.0",
         "@emotion/babel-plugin": "^11.10.2",
         "@types/node": "^18.8.2",
         "@types/react": "^18.0.21",
