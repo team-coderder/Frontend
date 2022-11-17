@@ -8,7 +8,7 @@ export const AddGroupContainer = styled.div`
     color: white;
 `;
 
-export const Header = styled.div`
+export const Title = styled.div`
     min-width: 200px;
     padding-left: 5rem;
     padding-top: 5rem;

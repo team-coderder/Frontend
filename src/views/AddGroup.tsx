@@ -5,13 +5,14 @@ import TextInput from '../components/TextInput';
 import { generateColor } from '../hooks/ColorMethod';
 import {
     AddGroupContainer,
-    Header,
     InputContainer,
     InputBox,
     MemberBox,
+    Title,
 } from '../styles/member/member';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useEffect } from 'react';
+import { Header } from '../styles/globalStyle/PageLayout';
 
 const dummy = ['강정구', '진지연', '송민진', '임지우', '권영재', 'f', '관 우'];
 
@@ -36,11 +37,11 @@ const AddGroup = () => {
 
     return (
         <AddGroupContainer>
-            <Header>
+            <Title>
                 <h1>그룹 생성하기</h1>
-            </Header>
+            </Title>
             <InputContainer className="groupName">
-                그룹 이름
+                <Header>그룹 이름</Header>
                 <InputBox>
                     <TextInput
                         height="30px"
@@ -49,9 +50,14 @@ const AddGroup = () => {
                 </InputBox>
             </InputContainer>
             <InputContainer className="addMember">
-                멤버 추가
-                <InputBox>
-                    <SearchID ref={searchRef} height="30px" />
+                <Header>멤버 추가</Header>
+                <InputBox
+                    ref={searchRef}
+                    onFocus={() => {
+                        setFocus(true);
+                    }}
+                >
+                    <SearchID focus={focus} height="30px" />
                 </InputBox>
                 <BsPlusCircle
                     className="plusBtn"

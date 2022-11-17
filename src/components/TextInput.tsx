@@ -15,7 +15,6 @@ interface TextInputProps {
     message?: string;
     children?: React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    ref?: any;
 }
 
 const WarningBox = styled.div`

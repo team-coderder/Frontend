@@ -9,7 +9,8 @@ interface SearchProps {
     height?: string;
     space?: string;
     onClick?: () => void;
-    ref?: any;
+    focus?: boolean;
+    missing?: boolean;
     // error?: boolean;
 }
 
@@ -20,14 +21,16 @@ const SearchContainer = styled.div<SearchProps>`
     margin: ${(props) => props.space};
 `;
 const ResultBox = styled.div<SearchProps>`
-    background-color: ${() => theme.color.main.light};
+    background-color: ${(props) =>
+        !props.missing ? theme.color.main.light : theme.color.gray};
     height: ${(props) => props.height};
     padding: 5px;
     display: flex;
     align-items: center;
     &:hover {
         cursor: pointer;
-        background-color: ${() => theme.color.main.dark};
+        background-color: ${(props) =>
+            !props.missing ? theme.color.main.dark : theme.color.gray};
     }
     z-index: 2;
     box-shadow: 1px 5px 5px gray;
@@ -63,7 +66,7 @@ const dummy = [
         username: 'asdf',
     },
 ];
-const SearchID = ({ width, height, space }: SearchProps) => {
+const SearchID = ({ width, height, space, focus }: SearchProps) => {
     const [val, setVal] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
@@ -78,7 +81,6 @@ const SearchID = ({ width, height, space }: SearchProps) => {
         .filter((data) => {
             if (val == null) return data;
             else if (data.username.toLowerCase().includes(val.toLowerCase())) {
-                console.log(data);
                 return data;
             }
         })
@@ -108,18 +110,17 @@ const SearchID = ({ width, height, space }: SearchProps) => {
                 value={val}
                 onChange={handleVal}
                 color="white"
-                ref={inputRef}
             />
-            {val ? (
-                items
-            ) : (
-                <ResultBox height={height}>
-                    <IconBox>
-                        <BsSearch />
-                    </IconBox>
-                    <ResultId>검색결과 없음</ResultId>
-                </ResultBox>
-            )}
+            {items.length && focus
+                ? val && items
+                : focus && (
+                      <ResultBox height={height} missing={true}>
+                          <IconBox>
+                              <BsSearch />
+                          </IconBox>
+                          <ResultId>검색결과 없음</ResultId>
+                      </ResultBox>
+                  )}
         </SearchContainer>
     );
 };
