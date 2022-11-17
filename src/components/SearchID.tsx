@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import theme from '../styles/theme';
 import TextInput from './TextInput';
@@ -16,7 +16,7 @@ interface SearchProps {
 const SearchContainer = styled.div<SearchProps>`
     position: relative;
     z-index: 2;
-    height: 30vh;
+    /* height: 30vh; */
     margin: ${(props) => props.space};
 `;
 const ResultBox = styled.div<SearchProps>`
@@ -63,8 +63,12 @@ const dummy = [
         username: 'asdf',
     },
 ];
-const SearchID = ({ width, height, space, ref }: SearchProps) => {
+const SearchID = ({ width, height, space }: SearchProps) => {
     const [val, setVal] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
+    useEffect(() => {
+        if (inputRef.current != null) inputRef.current.focus();
+    });
 
     const handleVal = (event: React.ChangeEvent<HTMLInputElement>) => {
         setVal(event.currentTarget.value);
@@ -74,28 +78,29 @@ const SearchID = ({ width, height, space, ref }: SearchProps) => {
         .filter((data) => {
             if (val == null) return data;
             else if (data.username.toLowerCase().includes(val.toLowerCase())) {
+                console.log(data);
                 return data;
             }
         })
         .map((data) => {
             return (
-                val !== data.username && (
-                    <ResultBox
-                        onClick={() => setVal(data.username)}
-                        height={height}
-                        key={data.user_id}
-                    >
-                        <IconBox>
-                            <BsSearch />
-                        </IconBox>
-                        <ResultId>{data.username}</ResultId>
-                    </ResultBox>
-                )
+                <ResultBox
+                    onClick={() => {
+                        setVal(data.username);
+                    }}
+                    height={height}
+                    key={data.user_id}
+                >
+                    <IconBox>
+                        <BsSearch />
+                    </IconBox>
+                    <ResultId>{data.username}</ResultId>
+                </ResultBox>
             );
         });
 
     return (
-        <SearchContainer space={space} ref={ref}>
+        <SearchContainer space={space}>
             <TextInput
                 width={width}
                 height={height}
@@ -103,8 +108,18 @@ const SearchID = ({ width, height, space, ref }: SearchProps) => {
                 value={val}
                 onChange={handleVal}
                 color="white"
+                ref={inputRef}
             />
-            {val && items}
+            {val ? (
+                items
+            ) : (
+                <ResultBox height={height}>
+                    <IconBox>
+                        <BsSearch />
+                    </IconBox>
+                    <ResultId>검색결과 없음</ResultId>
+                </ResultBox>
+            )}
         </SearchContainer>
     );
 };
