@@ -7,7 +7,7 @@ import {
     NavBox,
     ExplainBox,
     HelpBox,
-} from '../styles/Account/layout';
+} from '../styles/account/layout';
 
 const Signup = () => {
     const [id, setId] = useState('');

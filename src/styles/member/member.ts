@@ -10,7 +10,7 @@ export const AddGroupContainer = styled.div`
 
 export const Title = styled.div`
     min-width: 200px;
-    padding-left: 5rem;
+    padding-left: 3rem;
     padding-top: 5rem;
 `;
 
@@ -40,4 +40,12 @@ export const MemberBox = styled.div`
     grid-auto-rows: 100px; /* 그 외(암시적) 행의 크기 정의 */
 
     margin: 3rem;
+    margin-left: 8.5rem;
+`;
+
+export const IconBox = styled.div`
+    display: flex;
+    min-width: 30px;
+    align-items: center;
+    justify-content: center;
 `;
