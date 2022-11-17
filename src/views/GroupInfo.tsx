@@ -2,7 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { TextInput, Button, Member } from '../components';
-import { Container, Header, SubHeader, Main, Field } from '../styles/globalStyle/PageLayout';
+import {
+    Container,
+    Header,
+    SubHeader,
+    Main,
+    Field,
+} from '../styles/globalStyle/PageLayout';
 
 const GroupInfo = () => (
     <Container>
@@ -22,8 +28,22 @@ const GroupInfo = () => (
                 <TextInput height="2rem" placeholder="ID 검색" />
             </Field>
             <Field>
-                <Member backgroundColor="salmon" height="2.5rem" width="7em" space={5}>홍길동</Member>
-                <Member backgroundColor="indigo" height="2.5rem" width="7em" space={5}>아바타</Member>
+                <Member
+                    backgroundColor="salmon"
+                    height="2.5rem"
+                    width="7em"
+                    space={5}
+                >
+                    홍길동
+                </Member>
+                <Member
+                    backgroundColor="indigo"
+                    height="2.5rem"
+                    width="7em"
+                    space={5}
+                >
+                    아바타
+                </Member>
             </Field>
             <Field>
                 <SubHeader>그룹 삭제</SubHeader>
