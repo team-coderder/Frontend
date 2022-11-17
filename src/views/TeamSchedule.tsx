@@ -2,7 +2,14 @@ import React from 'react';
 import { FiSettings } from 'react-icons/fi';
 
 import { Button, Member } from '../components';
-import { Container, Header, SubHeader, AlignRight, Field, MarginRight } from '../styles/globalStyle/PageLayout';
+import {
+    Container,
+    Header,
+    SubHeader,
+    AlignRight,
+    Field,
+    MarginRight,
+} from '../styles/globalStyle/PageLayout';
 import { Schedule } from '../styles/schedule/schedule';
 
 const TeamSchedule = () => {

@@ -8,6 +8,7 @@ interface TextInputProps {
     marginLeft?: string;
     margin?: string;
     type?: 'none' | 'id' | 'password';
+    color?: 'white' | 'black';
     error?: boolean;
     placeholder?: string;
     value?: string | number;
@@ -26,8 +27,8 @@ const Component = styled.input<TextInputProps>`
     width: ${(props) => props.width ?? '300px'};
     height: ${(props) => props.height ?? 'auto'};
     margin: ${(props) => props.margin ?? '0'};
+    color: ${({ color }) => (!color ? theme.color.white : theme.color.black)};
     margin-left: ${(props) => props.marginLeft ?? '0'};
-    color: ${({ theme }) => theme.color.black};
     border-bottom: ${({ theme }) => theme.color.gray} 1px solid;
     border-left: medium none;
     border-right: medium none;
