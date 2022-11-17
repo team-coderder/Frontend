@@ -27,7 +27,6 @@ const AddGroup = () => {
                 !searchRef.current.contains(event.target as Node)
             ) {
                 setFocus(false);
-                console.log('hi');
             }
         }
         document.addEventListener('mousedown', handleClickOutside);
