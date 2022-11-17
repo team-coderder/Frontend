@@ -19,6 +19,7 @@ const dummy = ['강정구', '진지연', '송민진', '임지우', '권영재', 
 const AddGroup = () => {
     const [focus, setFocus] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent): void {
             if (
@@ -76,7 +77,6 @@ const AddGroup = () => {
                         disable={true}
                     >
                         {x}
-                        {/* {' : ' + generateColor(x)} */}
                     </Member>
                 ))}
             </MemberBox>

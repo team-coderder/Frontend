@@ -69,6 +69,7 @@ const dummy = [
 const SearchID = ({ width, height, space, focus }: SearchProps) => {
     const [val, setVal] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
+
     useEffect(() => {
         if (inputRef.current != null) inputRef.current.focus();
     });
