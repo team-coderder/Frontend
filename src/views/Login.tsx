@@ -8,7 +8,7 @@ import {
     HelpBox,
     NavBox,
     ExplainBox,
-} from '../styles/Account/layout';
+} from '../styles/account/layout';
 
 const Login = () => {
     const [id, setId] = useState('');
