@@ -34,7 +34,21 @@ export const AlignRight = styled.div`
     justify-content: flex-end;
 `;
 
+export const AlignLeft = styled.div`
+    display: flex;
+    justify-content: flex-start;
+`;
+
 export const MarginRight = styled.div`
     margin-right: 10px;
     display: inline-block;
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    margin-left: 50px;
+`;
+
+export const ButtonBox = styled.div`
+    margin-left: 30px;
 `;
