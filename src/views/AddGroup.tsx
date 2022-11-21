@@ -9,10 +9,16 @@ import {
     InputBox,
     MemberBox,
     Title,
+    IconBox,
 } from '../styles/member/member';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useEffect } from 'react';
-import { Header } from '../styles/globalStyle/PageLayout';
+import {
+    ButtonContainer,
+    ButtonBox,
+    Header,
+} from '../styles/globalStyle/PageLayout';
+import { Button } from '../components';
 
 const dummy = ['강정구', '진지연', '송민진', '임지우', '권영재', 'f', '관 우'];
 
@@ -59,12 +65,15 @@ const AddGroup = () => {
                 >
                     <SearchID focus={focus} height="30px" />
                 </InputBox>
-                <BsPlusCircle
-                    className="plusBtn"
-                    onClick={() => {
-                        console.log('clicked!');
-                    }}
-                />
+                <IconBox>
+                    <BsPlusCircle
+                        size="18"
+                        className="plusBtn"
+                        onClick={() => {
+                            console.log('clicked!');
+                        }}
+                    />
+                </IconBox>
             </InputContainer>
             <MemberBox>
                 {dummy.map((x, idx) => (
@@ -79,6 +88,14 @@ const AddGroup = () => {
                     </Member>
                 ))}
             </MemberBox>
+            <ButtonContainer className="addGroupBox">
+                <Header>그룹 추가</Header>
+                <ButtonBox>
+                    <Button width="250px" hoverBgColor="black">
+                        생성하기
+                    </Button>
+                </ButtonBox>
+            </ButtonContainer>
         </AddGroupContainer>
     );
 };
