@@ -11,8 +11,26 @@ import {
     MarginRight,
 } from '../styles/globalStyle/PageLayout';
 import { DayPilot, DayPilotCalendar } from '@daypilot/daypilot-lite-react';
+import { generateColor } from '../hooks/ColorMethod';
+const data = [
+    {
+        id: 1,
+        start: DayPilot.Date.today().addHours(10),
+        end: DayPilot.Date.today().addHours(11),
+        text: 'Event 1',
+    },
+    {
+        id: 2,
+        start: DayPilot.Date.today().addHours(13),
+        end: DayPilot.Date.today().addHours(16),
+        text: 'Event 2',
+    },
+];
 
 const TeamSchedule = () => {
+    // const dp = this.calendar;
+
+    // dp.update({ events: data });
     return (
         <Container>
             <Header>
@@ -33,7 +51,7 @@ const TeamSchedule = () => {
             />
             <SubHeader>그룹원</SubHeader>
             <Field>
-                <Member backgroundColor="main">나</Member>
+                <Member backgroundColor={generateColor('나')}>나</Member>
             </Field>
             <SubHeader>보기모드</SubHeader>
             <Field>
