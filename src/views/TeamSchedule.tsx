@@ -1,58 +1,62 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from 'react';
 import { FiSettings } from 'react-icons/fi';
 import { Button, Member } from '../components';
 import { generateColor } from '../hooks/ColorMethod';
 import {
-    Container,
-    Header,
-    SubHeader,
-    AlignRight,
     Field,
     MarginRight,
+    AlignRight,
 } from '../styles/globalStyle/PageLayout';
 import { DayPilot, DayPilotCalendar } from '@daypilot/daypilot-lite-react';
+import {
+    MainSchedule,
+    ScheduleContainer,
+    Title,
+    TitleBox,
+    MemberBox,
+} from '../styles/schedule/schedule';
+import { IconBox } from '../styles/member/member';
 
 const data = [
     {
         id: 1,
-        start: DayPilot.Date.today().addHours(10),
-        end: DayPilot.Date.today().addHours(11),
+        start: DayPilot.Date.today().addHours(12),
+        end: DayPilot.Date.today().addHours(13),
         text: 'Event 1',
     },
     {
         id: 2,
-        start: DayPilot.Date.today().addHours(13),
-        end: DayPilot.Date.today().addHours(16),
+        start: DayPilot.Date.today().addHours(18),
+        end: DayPilot.Date.today().addHours(20),
         text: 'Event 2',
     },
 ];
 
-const dumID = '권영재';
+const dummy = ['강정구', '진지연', '송민진', '임지우', '권영재'];
 
 const TeamSchedule: React.FC = () => {
-    // const [myEvents, setEvents] = React.useState<MbscCalendarEvent[]>([]);
-
-    // const onEventClick = React.useCallback((event) => {
-    //     toast({
-    //         message: event.event.title,
-    //     });
-    // }, []);
-
     const calendarRef: any = React.createRef();
-    console.log(calendarRef);
-    const startDate = DayPilot.Date.today();
-    // dp.update({ startDate, events: data });
+    const todayDate = DayPilot.Date.today();
+    const newmodal = DayPilot.Modal;
+    const [name, setName] = useState('');
+    // const init = (args) => (args.control.events.list = data);
+
     const state = {
         viewType: 'Week',
         durationBarVisible: false,
         timeRangeSelectedHandling: 'Enabled',
+        dayBeginsHour: 9,
+        businessEndsHour: 24,
+        heightSpec: 'BusinessHoursNoScroll',
         onTimeRangeSelected: async (args) => {
             console.log('args : ', args);
             const dp = args.control;
-            const modal = await DayPilot.Modal.prompt(
-                'Create a new event:',
-                'Event 1',
+            console.log('dp : ', dp);
+            // dp.update({ startDate, data });
+            const modal = await newmodal.prompt(
+                '생성할 스케줄 이름 : ',
+                'Schedule 1',
+                // { theme: 'modal_rounded' },
             );
             dp.clearSelection();
             if (!modal.result) {
@@ -71,7 +75,7 @@ const TeamSchedule: React.FC = () => {
         onEventClick: async (args) => {
             const dp = args.control;
             const modal = await DayPilot.Modal.prompt(
-                'Update event text:',
+                '변경할 스케줄 이름 : ',
                 args.e.text(),
             );
             if (!modal.result) {
@@ -84,30 +88,47 @@ const TeamSchedule: React.FC = () => {
     };
 
     return (
-        <Container>
-            <Header>
-                <h1>그룹 이름</h1>
-                <FiSettings
-                    size="24"
-                    style={{ marginLeft: '10px', cursor: 'pointer' }}
-                />
-            </Header>
+        <ScheduleContainer>
+            <TitleBox>
+                <Title>그룹 이름</Title>
+                <IconBox>
+                    <FiSettings
+                        size="24"
+                        style={{ marginLeft: '10px', cursor: 'pointer' }}
+                    />
+                </IconBox>
+            </TitleBox>
             <AlignRight>
-                <Button height="2.5rem">그룹 스케줄 수정</Button>
+                <Button width="250px" hoverBgColor="black" height="2.5rem">
+                    그룹 스케줄 수정
+                </Button>
             </AlignRight>
-            <div style={{ flexGrow: '1' }}>
+            <MainSchedule name={name}>
                 <DayPilotCalendar
                     days={7}
-                    startDate={DayPilot.Date.today()}
+                    startDate={todayDate}
                     ref={calendarRef}
+                    cellHeight={30}
+                    cellDuration={30}
                     {...state}
                 />
-            </div>
-            <SubHeader>그룹원</SubHeader>
-            <Field>
-                <Member backgroundColor={generateColor('나')}>나</Member>
-            </Field>
-            <SubHeader>보기모드</SubHeader>
+            </MainSchedule>
+            <Title>그룹원</Title>
+            <MemberBox>
+                {dummy.map((x, idx) => (
+                    <Member
+                        key={idx}
+                        space={5}
+                        backgroundColor={generateColor(x)}
+                        color="white"
+                        disable={false}
+                        onClick={() => setName(x)}
+                    >
+                        {x}
+                    </Member>
+                ))}
+            </MemberBox>
+            <Title>보기모드</Title>
             <Field>
                 <MarginRight>
                     <Button
@@ -128,7 +149,7 @@ const TeamSchedule: React.FC = () => {
                     진하게
                 </Button>
             </Field>
-        </Container>
+        </ScheduleContainer>
     );
 };
 

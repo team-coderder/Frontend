@@ -14,6 +14,7 @@ type MemberProps = {
     disable?: boolean;
     space?: number;
     children: React.ReactNode;
+    onClick?: () => void;
     // url: string;
 };
 
@@ -49,7 +50,7 @@ const Component = styled.div<MemberProps>`
                     : theme.color[props.focusBgColor]};
     }
     display: flex;
-    justify-content: space-between;
+    justify-content: ${(props) => (props.disable ? 'space-between' : 'center')};
     align-items: center;
     margin: ${(props) => props.space}px;
     padding-left: 1rem;
@@ -67,6 +68,7 @@ const Member = ({
     disable,
     space,
     children,
+    onClick,
 }: MemberProps) => {
     return (
         <Component
@@ -77,7 +79,9 @@ const Member = ({
             backgroundColor={backgroundColor}
             radius={radius}
             focusBgColor={focusBgColor}
+            disable={disable}
             space={space}
+            onClick={onClick}
         >
             <>
                 {children}
