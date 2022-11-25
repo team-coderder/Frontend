@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { FiSettings } from 'react-icons/fi';
-
 import { Button, Member } from '../components';
+import { generateColor } from '../hooks/ColorMethod';
 import {
     Container,
     Header,
@@ -11,7 +12,7 @@ import {
     MarginRight,
 } from '../styles/globalStyle/PageLayout';
 import { DayPilot, DayPilotCalendar } from '@daypilot/daypilot-lite-react';
-import { generateColor } from '../hooks/ColorMethod';
+
 const data = [
     {
         id: 1,
@@ -27,10 +28,61 @@ const data = [
     },
 ];
 
-const TeamSchedule = () => {
-    // const dp = this.calendar;
+const dumID = '권영재';
 
-    // dp.update({ events: data });
+const TeamSchedule: React.FC = () => {
+    // const [myEvents, setEvents] = React.useState<MbscCalendarEvent[]>([]);
+
+    // const onEventClick = React.useCallback((event) => {
+    //     toast({
+    //         message: event.event.title,
+    //     });
+    // }, []);
+
+    const calendarRef: any = React.createRef();
+    console.log(calendarRef);
+    const startDate = DayPilot.Date.today();
+    // dp.update({ startDate, events: data });
+    const state = {
+        viewType: 'Week',
+        durationBarVisible: false,
+        timeRangeSelectedHandling: 'Enabled',
+        onTimeRangeSelected: async (args) => {
+            console.log('args : ', args);
+            const dp = args.control;
+            const modal = await DayPilot.Modal.prompt(
+                'Create a new event:',
+                'Event 1',
+            );
+            dp.clearSelection();
+            if (!modal.result) {
+                return;
+            }
+            dp.events.add({
+                start: args.start,
+                end: args.end,
+                id: DayPilot.guid(),
+                text: modal.result,
+            });
+            console.log(args.start);
+            console.log(args.end);
+        },
+        eventDeleteHandling: 'Update',
+        onEventClick: async (args) => {
+            const dp = args.control;
+            const modal = await DayPilot.Modal.prompt(
+                'Update event text:',
+                args.e.text(),
+            );
+            if (!modal.result) {
+                return;
+            }
+            const e = args.e;
+            e.data.text = modal.result;
+            dp.events.update(e);
+        },
+    };
+
     return (
         <Container>
             <Header>
@@ -43,12 +95,14 @@ const TeamSchedule = () => {
             <AlignRight>
                 <Button height="2.5rem">그룹 스케줄 수정</Button>
             </AlignRight>
-            <DayPilotCalendar
-                durationBarVisible={false}
-                viewType="day"
-                days={7}
-                startDate={DayPilot.Date.today()}
-            />
+            <div style={{ flexGrow: '1' }}>
+                <DayPilotCalendar
+                    days={7}
+                    startDate={DayPilot.Date.today()}
+                    ref={calendarRef}
+                    {...state}
+                />
+            </div>
             <SubHeader>그룹원</SubHeader>
             <Field>
                 <Member backgroundColor={generateColor('나')}>나</Member>
