@@ -9,6 +9,7 @@ import {
     NavBox,
     ExplainBox,
 } from '../styles/account/layout';
+import { loginTest } from '../api/test';
 
 const Login = () => {
     const [id, setId] = useState('');
@@ -43,7 +44,13 @@ const Login = () => {
                     onChange={onPasswordHandler}
                 />
 
-                <Button type="submit" hoverBgColor="black">
+                <Button
+                    // type="submit"
+                    hoverBgColor="black"
+                    onClick={() =>
+                        loginTest({ username: id, password: password })
+                    }
+                >
                     로그인
                 </Button>
                 <ExplainBox>

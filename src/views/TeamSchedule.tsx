@@ -40,7 +40,9 @@ const TeamSchedule: React.FC = () => {
     const newmodal = DayPilot.Modal;
     const [name, setName] = useState('');
     // const init = (args) => (args.control.events.list = data);
-
+    // useEffect(() => {
+    //     calendarRef.control.events.list = data;
+    // }, []);
     const state = {
         viewType: 'Week',
         durationBarVisible: false,
@@ -48,6 +50,9 @@ const TeamSchedule: React.FC = () => {
         dayBeginsHour: 9,
         businessEndsHour: 24,
         heightSpec: 'BusinessHoursNoScroll',
+        onBeforeHeaderRender: (args) => {
+            args.header.html = args.heaer.start.toString('yyyy/M/d');
+        },
         onTimeRangeSelected: async (args) => {
             console.log('args : ', args);
             const dp = args.control;
@@ -56,7 +61,7 @@ const TeamSchedule: React.FC = () => {
             const modal = await newmodal.prompt(
                 '생성할 스케줄 이름 : ',
                 'Schedule 1',
-                // { theme: 'modal_rounded' },
+                { theme: 'modal_rounded' },
             );
             dp.clearSelection();
             if (!modal.result) {
@@ -77,6 +82,7 @@ const TeamSchedule: React.FC = () => {
             const modal = await DayPilot.Modal.prompt(
                 '변경할 스케줄 이름 : ',
                 args.e.text(),
+                { theme: 'modal_rounded' },
             );
             if (!modal.result) {
                 return;
