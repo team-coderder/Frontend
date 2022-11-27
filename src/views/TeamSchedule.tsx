@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FiSettings } from 'react-icons/fi';
 import { Button, Member } from '../components';
 import { generateColor } from '../hooks/ColorMethod';
@@ -35,7 +35,7 @@ const data = [
 const dummy = ['강정구', '진지연', '송민진', '임지우', '권영재'];
 
 const TeamSchedule: React.FC = () => {
-    const calendarRef: any = React.createRef();
+    const calendarRef: any = useRef();
     const todayDate = DayPilot.Date.today();
     const newmodal = DayPilot.Modal;
     const [name, setName] = useState('');
